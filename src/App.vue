@@ -1,30 +1,43 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
+polyfillCountryFlagEmojis();
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="header">
+    <button><h2>🇯🇵 ようこそ</h2></button>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <div class="banner">
+    <h1>@rafiedanialft</h1>
+  </div>
+  <div class="article">
+    <div class="textground">
+      <h2>Welcome!</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum at expedita nostrum vel? Beatae voluptatibus, minima recusandae natus sunt reprehenderit officiis dicta quisquam ipsam inventore consequatur rerum eligendi, magnam perspiciatis?</p>
+      <br>
+      <h2>Check out my stuff!</h2>
+    </div>
+    <div class="galleryground">
+      <div class="switchgallery">
+        <button>&lt;</button>
+      </div>
+      <div class="gallerybox">
+        <div class="imagebox">
+          <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+        </div>
+        <div class="textbox">
+          <h2>Papercut!</h2>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima.</p>
+        </div>
+      </div>
+      <div class="switchgallery">
+        <button>&gt;</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
