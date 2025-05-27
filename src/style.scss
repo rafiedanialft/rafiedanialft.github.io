@@ -52,14 +52,22 @@ button {
   color: rgba(0, 0, 0, 0.87);
   cursor: pointer;
   transition: border-color 0.25s;
+  
+  img {
+    width: 50px;
+  }
 }
 button:hover {
   // border-color: #646cff;
-  background-color: rgba(50, 19, 173, 0.27);
+  background-color: rgba(21, 17, 37, 0.06);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.shortbtn {
+  padding: 0.6em 0em 0em 0em;
 }
 
 .banner {
@@ -91,25 +99,24 @@ button:focus-visible {
   margin: 0em 10em;
 }
 
+.switchgallery {
+    flex: 1;
+    align-content: center;
+  }
+
 .galleryground {
   display: flex;
-  margin: 0em 5em;
-
-  .switchgallery {
-    flex: 1;
-
-    button {
-      height: 100%;
-    }
-  }
+  margin: 0em 3em;
   
   .gallerybox {
     flex: 10;
     display: flex;
     padding: 1em;
+    align-content: center;
 
     .imagebox {
       flex: 3;
+      align-content: center;
 
       img {
         width: 100%;
@@ -123,6 +130,7 @@ button:focus-visible {
       flex: 4;
       padding: 0 0 0 1em;
       text-align: justify;
+      align-content: center;
 
       h2 {
         margin: 0;
@@ -132,6 +140,37 @@ button:focus-visible {
         margin: 0;
       }
     }
+  }
+}
+
+.certificateground {
+  display: flex;
+  margin: 0em 3em;
+
+  .certificateslide {
+    flex: 10;
+  }
+}
+
+.contactlist {
+  button {
+    padding: 0.4em;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  img {
+    width: 48px;
+  }
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.87);
+  margin: 0;
+  padding: 1.4em 0 1em 0;
+  color: rgba(255, 255, 255, 0.8);
+
+  p {
+    margin: 0;
   }
 }
 

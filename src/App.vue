@@ -6,7 +6,10 @@ polyfillCountryFlagEmojis();
 
 <template>
   <div class="header">
-    <button><h2>🇯🇵 ようこそ</h2></button>
+    <button><h2>🇺🇸 Welcome!</h2></button>
+    <button><h2>🇯🇵 ようこそ!</h2></button>
+    <button><h2>🇮🇩 Selamat Datang!</h2></button>
+    <button><h2>🇮🇩 ꦱꦸꦒꦼꦁꦫꦮꦸꦃ!</h2></button>
   </div>
   <div class="banner">
     <h1>@rafiedanialft</h1>
@@ -20,7 +23,7 @@ polyfillCountryFlagEmojis();
     </div>
     <div class="galleryground">
       <div class="switchgallery">
-        <button>&lt;</button>
+        <button class="shortbtn"><img src="./assets/leftarrow.svg"></button>
       </div>
       <div class="gallerybox">
         <div class="imagebox">
@@ -28,13 +31,42 @@ polyfillCountryFlagEmojis();
         </div>
         <div class="textbox">
           <h2>Papercut!</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima.</p>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
         </div>
       </div>
       <div class="switchgallery">
-        <button>&gt;</button>
+        <button class="shortbtn"><img src="./assets/rightarrow.svg"></button>
       </div>
     </div>
+    <br>
+    <div class="textground">
+      <h2>My certificates!</h2>
+    </div>
+    <div class="certificateground">
+      <div class="switchgallery">
+        <button class="shortbtn"><img src="./assets/leftarrow.svg"></button>
+      </div>
+      <div class="certificateslide">
+
+      </div>
+      
+      <div class="switchgallery">
+        <button class="shortbtn"><img src="./assets/rightarrow.svg"></button>
+      </div>
+    </div>
+    <br>
+    <div class="textground">
+      <h2>Contact me here!</h2>
+      <div class="contactlist">
+        <button><img src="./assets/mail.svg" alt="Email"></button>
+        <button><img src="./assets/instagram.svg" alt="Instagram"></button>
+        <button><img src="./assets/discord.svg" alt="Discord"></button>
+        <button><img src="./assets/github.svg" alt="Github"></button>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>@rafiedanialft - 2025</p>
   </div>
 </template>
 
