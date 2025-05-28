@@ -149,13 +149,46 @@ button:focus-visible {
 
   .certificateslide {
     flex: 10;
+    display: flex;
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .certificatesection {
+    border-left: 1px solid #1a1a1a;
+    margin: 0 0.5em 0 0 ;
+    min-height: 10em;
+    max-height: 10em;
+    display: flex;
+    flex-direction: column;
+
+    .certificateheader {
+      text-align: left;
+      margin: 0.5em 0 0 1em;
+    }
+
+    .certificatefiles {
+      padding: 0.5em 1em;
+      display: flex;
+
+      img {
+        height: 7em;
+        margin: 0 0.5em 0 0;
+      }
+    } 
   }
 }
 
 .contactlist {
   button {
-    padding: 0.4em;
+    padding: 0 0.3em 0 0;
+    background-color: rgba(255, 255, 255);
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    &:hover {
+      background-color: rgb(255, 255, 255);
+    }
   }
 
   img {

@@ -47,9 +47,29 @@ polyfillCountryFlagEmojis();
         <button class="shortbtn"><img src="./assets/leftarrow.svg"></button>
       </div>
       <div class="certificateslide">
-
+        <div class="certificatesection">
+          <div class="certificateheader">
+            <span>Company Name</span>
+          </div>
+          <div class="certificatefiles">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+          </div>
+        </div>
+        <div class="certificatesection">
+          <div class="certificateheader">
+            <span>Company Name</span>
+          </div>
+          <div class="certificatefiles">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+          </div>
+        </div>
       </div>
-      
       <div class="switchgallery">
         <button class="shortbtn"><img src="./assets/rightarrow.svg"></button>
       </div>
