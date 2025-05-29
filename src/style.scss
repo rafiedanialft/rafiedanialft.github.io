@@ -153,6 +153,12 @@ button:focus-visible {
     overflow: scroll;
     overflow-x: auto;
     overflow-y: hidden;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .certificatesection {

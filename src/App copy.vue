@@ -1,77 +1,7 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+// import HelloWorld from './components/HelloWorld.vue'
 import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
 polyfillCountryFlagEmojis();
-
-const certificates = [
-  {
-    company: "Company Name123",
-    images: [
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png"
-    ]
-  },
-  {
-    company: "Company Name0000",
-    images: [
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png"
-    ]
-  }
-]
-
-const loopCertificates = [...certificates, ...certificates]
-
-const slideRef = ref(null)
-let scrolltimer = null;
-
-onMounted(() => {
-  // start of scrollspace is at the middle of the slide
-  nextTick(() => {
-    if (slideRef.value) {
-      slideRef.value.scrollLeft = slideRef.value.scrollWidth / 2
-      scrolltimer = setInterval(() => {
-        if (slideRef.value) {
-          slideRef.value.scrollLeft += 1;
-        }
-      }, 20);
-    }
-  })
-})
-
-onBeforeUnmount(() => {
-  if (scrolltimer) clearInterval(scrolltimer)
-})
-
-function handleScroll() {
-  const el = slideRef.value
-  if (!el) return
-  const half = el.scrollWidth / 2
-  // left-end bump, go to half of scrollspace
-  if (el.scrollLeft < 1) { 
-    el.scrollLeft = half
-  }
-  // right-end bump, go to start of scrollspace 
-  else if (el.scrollLeft >= half + 1) { 
-    el.scrollLeft = 1
-  }
-}
-
-function pauseScroll() {
-  if (scrolltimer) clearInterval(scrolltimer)
-}
-function resumeScroll() {
-  if (scrolltimer) clearInterval(scrolltimer)
-  scrolltimer = setInterval(() => {
-    if (slideRef.value) {
-      slideRef.value.scrollLeft += 1;
-    }
-  }, 20);
-}
 </script>
 
 <template>
@@ -116,29 +46,27 @@ function resumeScroll() {
       <div class="switchgallery">
         <button class="shortbtn"><img src="./assets/leftarrow.svg"></button>
       </div>
-      <div
-        class="certificateslide"
-        ref="slideRef"
-        @scroll="handleScroll"
-        @touchmove="handleScroll"
-        @mousemove="pauseScroll"
-        @mouseleave="resumeScroll"
-      >
-        <div
-          class="certificatesection"
-          v-for="(cert, idx) in loopCertificates"
-          :key="idx"
-        >
+      <div class="certificateslide">
+        <div class="certificatesection">
           <div class="certificateheader">
-            <span>{{ cert.company }}</span>
+            <span>Company Name</span>
           </div>
           <div class="certificatefiles">
-            <img
-              v-for="(img, i) in cert.images"
-              :key="i"
-              :src="img"
-              alt=""
-            />
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+          </div>
+        </div>
+        <div class="certificatesection">
+          <div class="certificateheader">
+            <span>Company Name</span>
+          </div>
+          <div class="certificatefiles">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
           </div>
         </div>
       </div>
