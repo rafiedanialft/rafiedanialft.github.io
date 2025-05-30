@@ -1,79 +1,3 @@
-<script setup>
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
-polyfillCountryFlagEmojis();
-
-const certificates = [
-  {
-    company: "Company Name123",
-    images: [
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png"
-    ]
-  },
-  {
-    company: "Company Name0000",
-    images: [
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
-      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png"
-    ]
-  }
-]
-
-const loopCertificates = [...certificates, ...certificates]
-
-const slideRef = ref(null)
-let scrolltimer = null;
-
-onMounted(() => {
-  // start of scrollspace is at the middle of the slide
-  nextTick(() => {
-    if (slideRef.value) {
-      slideRef.value.scrollLeft = slideRef.value.scrollWidth / 2
-      scrolltimer = setInterval(() => {
-        if (slideRef.value) {
-          slideRef.value.scrollLeft += 1;
-        }
-      }, 20);
-    }
-  })
-})
-
-onBeforeUnmount(() => {
-  if (scrolltimer) clearInterval(scrolltimer)
-})
-
-function handleScroll() {
-  const el = slideRef.value
-  if (!el) return
-  const half = el.scrollWidth / 2
-  // left-end bump, go to half of scrollspace
-  if (el.scrollLeft < 1) { 
-    el.scrollLeft = half
-  }
-  // right-end bump, go to start of scrollspace 
-  else if (el.scrollLeft >= half + 1) { 
-    el.scrollLeft = 1
-  }
-}
-
-function pauseScroll() {
-  if (scrolltimer) clearInterval(scrolltimer)
-}
-function resumeScroll() {
-  if (scrolltimer) clearInterval(scrolltimer)
-  scrolltimer = setInterval(() => {
-    if (slideRef.value) {
-      slideRef.value.scrollLeft += 1;
-    }
-  }, 20);
-}
-</script>
-
 <template>
   <div class="header">
     <button><h2>🇺🇸 Welcome!</h2></button>
@@ -92,23 +16,71 @@ function resumeScroll() {
       <h2>Check out my stuff!</h2>
     </div>
     <div class="galleryground">
-      <div class="switchgallery">
-        <button class="shortbtn"><img src="./assets/leftarrow.svg"></button>
-      </div>
-      <div class="gallerybox">
-        <div class="imagebox">
-          <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+      <Splide
+        ref="splideRef"
+        :options="{
+          type: 'loop',
+          perPage: 1,
+          arrows: true,
+          pagination: false,
+        }"
+        class="my-splide"
+      >
+        
+        <SplideSlide>
+          <div class="galleryflex">
+            <div class="emptyflex">
+
+            </div>
+            <div class="gallerybox">
+              <div class="imagebox">
+                <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+              </div>
+              <div class="textbox">
+                <h2>Papercut!</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
+              </div>
+            </div>
+            <div class="emptyflex">
+              
+            </div>
+
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="galleryflex">
+            <div class="emptyflex">
+
+            </div>
+            <div class="gallerybox">
+              <div class="imagebox">
+                <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+              </div>
+              <div class="textbox">
+                <h2>Papercut!</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
+              </div>
+            </div>
+            <div class="emptyflex">
+              
+            </div>
+
+          </div>
+        </SplideSlide>
+      </Splide>
+      <div class="galleryflex">
+        <div class="emptyflex">
+
         </div>
-        <div class="textbox">
-          <h2>Papercut!</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
+        <div class="my-slider-progress">
+          <div class="my-slider-progress-bar" ref="progressBarRef"></div>
         </div>
-      </div>
-      <div class="switchgallery">
-        <button class="shortbtn"><img src="./assets/rightarrow.svg"></button>
+        <div class="emptyflex"> 
+
+        </div>
       </div>
     </div>
-    <br>
+    <br><br>
     <div class="textground">
       <h2>My certificates!</h2>
     </div>
@@ -116,29 +88,27 @@ function resumeScroll() {
       <div class="switchgallery">
         <button class="shortbtn"><img src="./assets/leftarrow.svg"></button>
       </div>
-      <div
-        class="certificateslide"
-        ref="slideRef"
-        @scroll="handleScroll"
-        @touchmove="handleScroll"
-        @mousemove="pauseScroll"
-        @mouseleave="resumeScroll"
-      >
-        <div
-          class="certificatesection"
-          v-for="(cert, idx) in loopCertificates"
-          :key="idx"
-        >
+      <div class="certificateslide">
+        <div class="certificatesection">
           <div class="certificateheader">
-            <span>{{ cert.company }}</span>
+            <span>Company Name</span>
           </div>
           <div class="certificatefiles">
-            <img
-              v-for="(img, i) in cert.images"
-              :key="i"
-              :src="img"
-              alt=""
-            />
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+          </div>
+        </div>
+        <div class="certificatesection">
+          <div class="certificateheader">
+            <span>Company Name</span>
+          </div>
+          <div class="certificatefiles">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
           </div>
         </div>
       </div>
@@ -162,6 +132,40 @@ function resumeScroll() {
   </div>
 </template>
 
+<script setup>
+import { ref, onMounted } from 'vue';
+import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+
+polyfillCountryFlagEmojis();
+
+const splideRef = ref(null);
+const progressBarRef = ref(null);
+
+onMounted(() => {
+  const splide = splideRef.value?.splide;
+  const bar = progressBarRef.value;
+  if (splide && bar) {
+    splide.on('mounted move', () => {
+      const end = splide.Components.Controller.getEnd() + 1;
+      const rate = Math.min((splide.index + 1) / end, 1);
+      bar.style.width = String(100 * rate) + '%';
+    });
+  }
+});
+</script>
+
 <style scoped>
+.my-slider-progress {
+  flex: 6;
+  background: #ccc;
+  margin-top: 8px;
+}
+.my-slider-progress-bar {
+  background: #1a1a1a;
+  height: 2px;
+  transition: width 400ms ease;
+  width: 0%;
+}
 
 </style>
