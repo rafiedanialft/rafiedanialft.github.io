@@ -152,51 +152,57 @@ button:focus-visible {
   }
 }
 
-
+.certificateslide {
+  flex: 10;
+  display: flex;
+  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 
 .certificateground {
   display: flex;
-  margin: 0em 3em;
-
-  .certificateslide {
-    flex: 10;
-    display: flex;
-    overflow: scroll;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  .certificatesection {
-    border-left: 1px solid #1a1a1a;
-    margin: 0 0.5em 0 0 ;
-    min-height: 10em;
-    max-height: 10em;
-    display: flex;
-    flex-direction: column;
-
-    .certificateheader {
-      text-align: left;
-      margin: 0.5em 0 0 1em;
-    }
-
-    .certificatefiles {
-      padding: 0.5em 1em;
-      display: flex;
-
-      img {
-        width: 100%;
-        height: 1em;
-        margin: 0 0.5em 0 0;
-      }
-    } 
-  }
+  margin: 0em 8em;
+  overflow: hidden;
 }
+
+.certificatesection {
+  border-left: 1px solid #1a1a1a;
+  margin: 0 0.5em 0 0 ;
+  min-height: 10em;
+  max-height: 10em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  .certificateheader {
+    text-align: left;
+    margin: 0.5em 0 0 1em;
+  }
+  
+  
+}
+
+.certificatefiles {
+  padding: 0.5em 1em;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5em;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;   
+  
+  img {
+    max-height: 7em;
+    margin: 0 0.5em 0 0;
+  }
+} 
 
 .contactlist {
   button {

@@ -17,104 +17,91 @@
     </div>
     <div class="galleryground">
       <Splide
-        ref="splideRef"
         :options="{
           type: 'loop',
           perPage: 1,
           arrows: true,
-          pagination: false,
+          pagination: true,
         }"
-        class="my-splide"
+        :has-track="false"
       >
-        
-        <SplideSlide>
-          <div class="galleryflex">
-            <div class="emptyflex">
-
-            </div>
-            <div class="gallerybox">
-              <div class="imagebox">
-                <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+        <SplideTrack>
+          <SplideSlide>
+            <div class="galleryflex">
+              <div class="emptyflex"></div>
+              <div class="gallerybox">
+                <div class="imagebox">
+                  <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+                </div>
+                <div class="textbox">
+                  <h2>Papercut!</h2>
+                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
+                </div>
               </div>
-              <div class="textbox">
-                <h2>Papercut!</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
+              <div class="emptyflex"></div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div class="galleryflex">
+              <div class="emptyflex"></div>
+              <div class="gallerybox">
+                <div class="imagebox">
+                  <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
+                </div>
+                <div class="textbox">
+                  <h2>Papercut!</h2>
+                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
+                </div>
               </div>
+              <div class="emptyflex"></div>
             </div>
-            <div class="emptyflex">
-              
-            </div>
-
+          </SplideSlide>
+        </SplideTrack>
+          <div class="splide__arrows">
+            <button class="splide__arrow splide__arrow--prev"><img src="./assets/leftarrow.svg"></button>
+            <button class="splide__arrow splide__arrow--next"><img src="./assets/rightarrow.svg"></button>
           </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div class="galleryflex">
-            <div class="emptyflex">
-
-            </div>
-            <div class="gallerybox">
-              <div class="imagebox">
-                <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-              </div>
-              <div class="textbox">
-                <h2>Papercut!</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam libero id quas non quaerat quasi qui inventore dolore consequatur. Quae maxime ipsa incidunt est cum maiores fugit reprehenderit minima. lorem</p>
-              </div>
-            </div>
-            <div class="emptyflex">
-              
-            </div>
-
-          </div>
-        </SplideSlide>
+          <ul class="splide__pagination"></ul>
       </Splide>
-      <div class="galleryflex">
-        <div class="emptyflex">
-
-        </div>
-        <div class="my-slider-progress">
-          <div class="my-slider-progress-bar" ref="progressBarRef"></div>
-        </div>
-        <div class="emptyflex"> 
-
-        </div>
-      </div>
+      
     </div>
-    <br><br>
+    <br><br><br>
     <div class="textground">
       <h2>My certificates!</h2>
     </div>
     <div class="certificateground">
-      <div class="switchgallery">
-        <button class="shortbtn"><img src="./assets/leftarrow.svg"></button>
-      </div>
-      <div class="certificateslide">
-        <div class="certificatesection">
-          <div class="certificateheader">
-            <span>Company Name</span>
-          </div>
-          <div class="certificatefiles">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-          </div>
+      <Splide
+        :options="{
+          type: 'loop',
+          perPage: auto,
+          autoWidth: true,
+          gap: '0em',
+          arrows: false,
+          pagination: false,
+          drag: false,
+          perMove: 1,
+          autoScroll: {
+            speed: 1,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+          }
+        }"
+        :extensions="{ AutoScroll }"
+        class="certificate-splide"
+      >
+      <SplideSlide v-for="(section, idx) in certificateSections" 
+      :key="idx"
+      >
+      <div class="certificatesection">
+        <div class="certificateheader">
+          <span>{{ section.company }}</span>
         </div>
-        <div class="certificatesection">
-          <div class="certificateheader">
-            <span>Company Name</span>
-          </div>
-          <div class="certificatefiles">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-            <img src="https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png" alt="">
-          </div>
+        <div class="certificatefiles">
+          <img v-for="(img, i) in section.images" :key="i" :src="img" alt="Certificate">
         </div>
       </div>
-      <div class="switchgallery">
-        <button class="shortbtn"><img src="./assets/rightarrow.svg"></button>
-      </div>
+    </SplideSlide>
+    </Splide>
     </div>
     <br>
     <div class="textground">
@@ -133,39 +120,73 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
 import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 polyfillCountryFlagEmojis();
 
-const splideRef = ref(null);
-const progressBarRef = ref(null);
-
-onMounted(() => {
-  const splide = splideRef.value?.splide;
-  const bar = progressBarRef.value;
-  if (splide && bar) {
-    splide.on('mounted move', () => {
-      const end = splide.Components.Controller.getEnd() + 1;
-      const rate = Math.min((splide.index + 1) / end, 1);
-      bar.style.width = String(100 * rate) + '%';
-    });
-  }
-});
+const certificateSections = [
+  {
+    company: "Company Name",
+    images: [
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+    ],
+  },
+  {
+    company: "Company Name",
+    images: [
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+    ],
+  },
+  {
+    company: "Company Name",
+    images: [
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+      "https://startup.info/wp-content/uploads/2022/02/game-developmentpng.png",
+    ],
+  },
+];
 </script>
 
 <style scoped>
-.my-slider-progress {
-  flex: 6;
-  background: #ccc;
-  margin-top: 8px;
+.splide__arrow {
+  background: transparent;
+  transition: background 0.2s;
+  top: 100%;
+  height: 3em;
+  border-radius: 10px;
+  width: 3em;
 }
-.my-slider-progress-bar {
-  background: #1a1a1a;
-  height: 2px;
-  transition: width 400ms ease;
-  width: 0%;
+
+.splide__arrow--prev {
+  margin-top: 1em;
+  left: 4.5em;
+}
+
+.splide__arrow--next {
+  margin-top: 1em;
+  right: 4.5em;
+}
+
+.splide__pagination {
+  bottom: -1.4em;
+}
+
+:deep(.splide__pagination__page) {
+  background: #bbb;
+}
+:deep(.splide__pagination__page.is-active) {
+  background: #555;
+}
+
+.certificate-splide {
+  overflow: hidden;
 }
 
 </style>
